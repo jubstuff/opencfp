@@ -59,12 +59,22 @@ class SpeakersController extends BaseController
         $accounts = $this->service(AccountManagement::class);
         $adminUsers = $accounts->findByRole('Admin');
         $adminUserIds = array_column($adminUsers, 'id');
+        $voterUsers = $accounts->findByRole('Voters');
+        $voterUserIds = array_column($voterUsers, 'id');
 
         foreach ($rawSpeakers as $key => $each) {
             if (in_array($each['id'], $adminUserIds)) {
                 $rawSpeakers[$key]['is_admin'] = true;
             } else {
                 $rawSpeakers[$key]['is_admin'] = false;
+            }
+        }
+        
+        foreach ($rawSpeakers as $key => $each) {
+            if (in_array($each['id'], $voterUserIds)) {
+                $rawSpeakers[$key]['is_voter'] = true;
+            } else {
+                $rawSpeakers[$key]['is_voter'] = false;
             }
         }
 

@@ -13,4 +13,6 @@ interface AccountManagement
     public function activate($email);
     public function promote($email);
     public function demote($email);
+    public function promoteVoter($email);
+    public function demoteVoter($email);
 }

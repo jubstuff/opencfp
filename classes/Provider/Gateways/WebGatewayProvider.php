@@ -110,6 +110,9 @@ class WebGatewayProvider implements BootableProviderInterface, ServiceProviderIn
         $web->get('/admin/admins', 'OpenCFP\Http\Controller\Admin\AdminsController::indexAction')->bind('admin_admins');
         $web->get('/admin/admins/{id}', 'OpenCFP\Http\Controller\Admin\AdminsController::removeAction')->bind('admin_admin_delete');
         $web->get('/admin/admins/{id}/promote', 'OpenCFP\Http\Controller\Admin\AdminsController::promoteAction')->bind('admin_admin_promote');
+        $web->get('/admin/voters', 'OpenCFP\Http\Controller\Admin\VotersController::indexAction')->bind('admin_voters');
+        $web->get('/admin/voters/{id}', 'OpenCFP\Http\Controller\Admin\VotersController::removeAction')->bind('admin_voter_delete');
+        $web->get('/admin/voters/{id}/promote', 'OpenCFP\Http\Controller\Admin\VotersController::promoteAction')->bind('admin_voter_promote');
 
         // Admin::Review
         $web->get('/admin/review', 'OpenCFP\Http\Controller\Admin\ReviewController::indexAction')->bind('admin_reviews');

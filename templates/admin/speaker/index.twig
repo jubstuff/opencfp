@@ -33,6 +33,8 @@
                             {% if speaker.is_admin == false %}
                             <a href="{{ url('admin_admin_promote', { id: speaker.id }) }}" onClick="return confirm('Are you sure you want promote this user as an admin?');">Make Admin</a>
                             {% else %}Admin{% endif %}
+                            {% if speaker.is_voter == false %}<a href="{{ url('admin_voter_promote', { id: speaker.id }) }}" onClick="return confirm('Are you sure you want promote this user as a voter?');">Make Voter</a>
+                            {% else %}Voter{% endif %}
                             <a href="{{ url('admin_speaker_delete', { id: speaker.id }) }}" onClick="return confirm('Are you sure you want to delete this user');">Delete</a>
                         </td>
                     </tr>

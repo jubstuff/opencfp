@@ -75,4 +75,18 @@ class SentryAccountManagement implements AccountManagement
             $this->sentry->findGroupByName('Admin')
         );
     }
+
+    public function promoteVoter($email)
+    {
+        $this->findByLogin($email)->addGroup(
+            $this->sentry->findGroupByName('Voters')
+        );
+    }
+
+    public function demoteVoter($email)
+    {
+        $this->findByLogin($email)->removeGroup(
+            $this->sentry->findGroupByName('Voters')
+        );
+    }
 }
